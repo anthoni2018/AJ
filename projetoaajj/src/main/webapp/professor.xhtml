@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Gerenciador de Professores</title>
+</h:head>
+
+<h:body>
+	<h:form>
+    	<p:outputLabel value="Idprofessor: "  />
+    	<p:inputText  value="#{professorBean.professor.idProfessor}"
+        	label="IdProfessor" />
+
+    	<p:outputLabel value="Nome: " for="itNomeProfessor" />
+    	<p:inputText id="itNomeProfessor" value="#{professorBean.professor.nome}"
+        	label="Nome" />
+       	 
+    	<p:outputLabel value="Idade: " for="itIdadeProfessor" />
+    	<p:inputText id="itIdadeProfessor" value="#{professorBean.professor.idade}"
+        	label="Idade" />
+       	 
+    	<p:outputLabel value="Descrição: " for="itDescriçãoProfessor" />
+    	<p:inputText id="itDescriçãoProfessor" value="#{professorBean.professor.descricao}"
+        	label="Descrição" />
+
+    	<p:commandButton id="botaoEntrar" value="entrar"
+        	action="#{professorBean.adicionarProfessor()}" ajax="false">
+    	</p:commandButton>
+
+    	<p:dataTable id="professorEsTable" border="1" var="prof"
+        	value="#{professorBean.professores.values()}">
+        	<f:facet name="header">Professores</f:facet>
+        	<p:column>
+            	<f:facet name="header">IdProfessor</f:facet>
+            	<h:outputText value="#{prof.idProfessor}" />
+        	</p:column>
+        	<p:column>
+            	<f:facet name="header">Nome</f:facet>
+            	<h:outputText value="#{prof.nome}" />
+        	</p:column>
+        	<p:column>
+            	<f:facet name="header">Idade</f:facet>
+            	<h:outputText value="#{prof.idade}" />
+        	</p:column>
+        	<p:column>
+            	<f:facet name="header">Descrição</f:facet>
+            	<h:outputText value="#{prof.descricao}" />
+        	</p:column>
+        	<p:column>
+            	<f:facet name="header">Opções</f:facet>
+
+            	<p:commandButton id="botaoRemover" value="remover" ajax="false"
+                	update="professoresTable"
+                	action="#{professorBean.removerProfessor(prof.idProfessor)}" />
+
+        	</p:column>
+    	</p:dataTable>
+	</h:form>
+</h:body>
+
+</html>

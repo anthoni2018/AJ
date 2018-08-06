@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Gerenciador de Alimentos</title>
+</h:head>
+
+<h:body>
+	<h:form>
+		<p:outputLabel value="Idalimento: " />
+		<p:inputText value="#{alimentoBean.alimento.idAlimento}"
+			label="idAlimento" />
+
+		<p:outputLabel value="Peso: " for="itPesoAlimento" />
+		<p:inputText id="itPesoAlimento" value="#{alimentoBean.alimento.peso}"
+			label="Peso" />
+
+		<p:outputLabel value="Nome: " for="itNomeAlimento" />
+		<p:inputText id="itNomeAlimento" value="#{alimentoBean.alimento.nome}"
+			label="Nome" />
+
+		<p:outputLabel value="Caloria: " for="itCaloriaAlimento" />
+		<p:inputText id="itCaloriaAlimento" value="#{alimentoBean.alimento.caloria}"
+			label="Caloria" />
+
+		<p:commandButton id="botaoEntrar" value="entrar"
+			action="#{alimentoBean.adicionarAlimento()}" ajax="false">
+		</p:commandButton>
+
+		<p:dataTable id="alimentosTable" border="1" var="ali" ajax = "false" 
+			value="#{alimentoBean.alimento}">
+			<f:facet name="header">Alimentos</f:facet>
+			<p:column>
+				<f:facet name="header">ID (Alimento)</f:facet>
+				<h:outputText value="#{ali.idAlimento}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">Peso</f:facet>
+				<h:outputText value="#{ali.peso}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">Nome</f:facet>
+				<h:outputText value="#{ali.nome}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">Caloria</f:facet>
+				<h:outputText value="#{ali.caloria}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">Opções</f:facet>
+
+				<p:commandButton id="botaoRemover" value="remover" ajax="false"
+					update="alimentosTable"
+					action="#{alimentoBean.removerAlimento(ali.idAlimento)}" />
+
+			</p:column>
+		</p:dataTable>
+	</h:form>
+</h:body>
+
+</html>
