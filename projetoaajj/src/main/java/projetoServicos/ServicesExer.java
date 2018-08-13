@@ -28,7 +28,7 @@ public class ServicesExer {
 
 	public void delete(Exercicio exer) throws ServiceDacException {
 		try {
-			Dao.delete(exer);
+			Dao.delete(exer.getIdExercicio());
 		} catch (PersistenciaDacException e) {
 			throw new ServiceDacException();
 		}

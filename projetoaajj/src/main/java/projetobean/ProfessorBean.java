@@ -3,13 +3,13 @@ package projetobean;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.faces.bean.ApplicationScoped;
-import javax.faces.bean.ManagedBean;
+import javax.faces.view.ViewScoped;
+import javax.inject.Named;
 
 import projetoEntidades.Professor;
 
-@ManagedBean
-@ApplicationScoped
+@ViewScoped
+@Named
 public class ProfessorBean {
     
 	private Map<Integer, Professor> professores;

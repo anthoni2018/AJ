@@ -1,16 +1,12 @@
 package projetoDao;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
-import projetoEntidades.Alimento;
 import projetoEntidades.Professor;
 import projetoServicos.PersistenciaDacException;
 
@@ -43,11 +39,12 @@ public class DaoProf {
 	}
 
 	public Professor getByID(int idProfessor) throws PersistenciaDacException {
-		return REPOSITORY.get(idProfessor);
+		return manager.find(Professor.class, idProfessor);
 	}
 
 	public List<Professor> getAll() throws PersistenciaDacException {
-		return new ArrayList<Professor>(REPOSITORY.values());
+		Query query = manager.createQuery("from Professor");
+		return query.getResultList();
 	}
 	
 }

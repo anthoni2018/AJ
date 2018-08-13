@@ -1,14 +1,14 @@
 package projetobean;
 
-import javax.faces.bean.ApplicationScoped;
-import javax.faces.bean.ManagedBean;
+import javax.faces.view.ViewScoped;
+import javax.inject.Named;
 
 import projetoDao.DaoAli;
 import projetoEntidades.Alimento;
 import projetoServicos.PersistenciaDacException;
 
-@ManagedBean
-@ApplicationScoped
+@ViewScoped
+@Named
 public class AlimentoBean {
 
 	private DaoAli dao;

@@ -1,14 +1,14 @@
 package projetobean;
 
-import javax.faces.bean.ApplicationScoped;
-import javax.faces.bean.ManagedBean;
+import javax.faces.view.ViewScoped;
+import javax.inject.Named;
 
 import projetoDao.DaoExer;
 import projetoEntidades.Exercicio;
 import projetoServicos.PersistenciaDacException;
 
-@ManagedBean
-@ApplicationScoped
+@ViewScoped
+@Named
 public class ExercicioBean {
 
 	private DaoExer dao;
