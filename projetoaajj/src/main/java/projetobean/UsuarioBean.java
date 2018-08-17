@@ -3,6 +3,7 @@ package projetobean;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
@@ -11,7 +12,8 @@ import projetoEntidades.Usuario;
 @ViewScoped
 @Named
 public class UsuarioBean {
-
+	
+	@Inject
 	private Map<Integer, Usuario> usuarios;
 
 	private Usuario usuario;
@@ -20,7 +22,8 @@ public class UsuarioBean {
 	public Map<Integer, Usuario> getUsuarios() {
 		return usuarios;
 	}
-
+	
+	@PostConstruct
 	public void setUsuarios(Map<Integer, Usuario> usuarios) {
 		this.usuarios = usuarios;
 	}

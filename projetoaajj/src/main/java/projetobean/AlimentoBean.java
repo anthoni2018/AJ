@@ -1,5 +1,6 @@
 package projetobean;
 
+import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
@@ -10,16 +11,20 @@ import projetoServicos.PersistenciaDacException;
 @ViewScoped
 @Named
 public class AlimentoBean {
-
+	
+	@Inject
 	private DaoAli dao;
 
 	private Alimento alimento;
 	private String alimentoBusca;
-
+	
+	
+	
 	public Alimento getAlimento() {
 		return alimento;
 	}
-
+	
+	@PostConstruct
 	public void setAlimento(Alimento alimento) {
 		this.alimento = alimento;
 	}

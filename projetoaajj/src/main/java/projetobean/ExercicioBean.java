@@ -1,5 +1,6 @@
 package projetobean;
 
+import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
@@ -10,7 +11,8 @@ import projetoServicos.PersistenciaDacException;
 @ViewScoped
 @Named
 public class ExercicioBean {
-
+	
+	@Inject
 	private DaoExer dao;
 
 	private Exercicio exercicio;
@@ -20,6 +22,7 @@ public class ExercicioBean {
 		return exercicio;
 	}
 	
+	@PostConstruct
 	public void setExercicios(Exercicio exercicio) {
 		this.exercicio = exercicio;
 	}
