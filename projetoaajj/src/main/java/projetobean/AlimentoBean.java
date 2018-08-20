@@ -1,5 +1,7 @@
 package projetobean;
 
+import java.io.Serializable;
+
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
@@ -10,15 +12,13 @@ import projetoServicos.PersistenciaDacException;
 
 @ViewScoped
 @Named
-public class AlimentoBean {
+public class AlimentoBean implements Serializable{
 	
 	@Inject
 	private DaoAli dao;
 
 	private Alimento alimento;
 	private String alimentoBusca;
-	
-	
 	
 	public Alimento getAlimento() {
 		return alimento;
