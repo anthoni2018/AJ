@@ -5,34 +5,43 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-	<title>Gerenciador de Usuarios</title>
+	<title>Gerenciador Usuarios</title>
 </h:head>
 
 <h:body>
+	<p:messages />
+	
 	<h:form>
-		<p:outputLabel value="Idusuario: "  />
-		<p:inputText  value="#{usuarioBean.usuario.idUsuario}"
-			label="Idusuario" />
+	<p:panelGrid columns="2" >
+		<f:facet name="caption">
+			<h:outputText value="Filtros" />
+			</f:facet>
+				<f:facet name="header">
+		<h:outputLabel value="Idusuario: " for="nomeField"   />
+		<p:inputText  id="nomeField" value="#{usuarioBean.usuario.idUsuario}"
+			label="Idusuario"style="width:350px"/>
 
-		<p:outputLabel value="Peso: " for="itPesoUsuario" />
-		<p:inputText id="itPesoUsuario" value="#{usuarioBean.usuario.peso}" 
-			label="Peso" />
+		<p:outputLabel value="Peso: " for="itPesoUsuarioField" />
+		<p:inputText id="itPesoUsuarioField" value="#{usuarioBean.usuario.peso}" 
+			label="Peso"style="width:350px" />
 
-		<p:outputLabel value="Nome: " for="itNomeUsuario" />
-		<p:inputText id="itNomeUsuario" value="#{usuarioBean.usuario.nome}"
+		<p:outputLabel value="Nome: " for="itNomeUsuarioField" />
+		<p:inputText id="itNomeUsuarioField" value="#{usuarioBean.usuario.nome}"
 			label="Nome" />
 			
-		<p:outputLabel value="Idade: " for="itIdadeUsuario" />
-		<p:inputText id="itIdadeUsuario" value="#{usuarioBean.usuario.idade}"
+		<p:outputLabel value="Idade: " for="itIdadeUsuarioField" />
+		<p:inputText id="itIdadeUsuarioField" value="#{usuarioBean.usuario.idade}"
 			label="Idade" />
 			
-		<p:outputLabel value="Descrição: " for="itDescriçãoUsuario" />
-		<p:inputText id="itDescriçãoUsuario" value="#{usuarioBean.usuario.descricao}"
+		<p:outputLabel value="Descrição: " for="itDescriçãoUsuarioField" />
+		<p:inputText id="itDescriçãoUsuarioField" value="#{usuarioBean.usuario.descricao}"
 			label="Descrição" />
-
-		<p:commandButton id="botaoEntrar" value="entrar"
-			action="#{usuarioBean.adicionarUsuario()}" ajax="false">
-		</p:commandButton>
+			
+			<p:commandButton id="btnNovo" value="Novo"
+				action="#{usuarioBean.save()}" ajax="false" />
+			<p:commandButton id="btnLimpar" value="Limpar"
+				action="#{usuarioBean.limpar()}" ajax="false" />
+		</p:panelGrid>
 
 		<p:dataTable id="usuariosTable" border="1" var="usu"
 			value="#{usuarioBean.usuarios.values()}">
@@ -59,8 +68,9 @@
 			</p:column>
 			<p:column>
 				<f:facet name="header">Opções</f:facet>
-
 				<p:commandButton id="botaoRemover" value="remover" ajax="false"
+				action="#{usuarioBean.remove(entidade)}"></p:commandButton>
+				<p:commandButton value="Editar" ajax="false"
 					update="usuariosTable"
 					action="#{usuarioBean.removerUsuario(usu.idUsuario)}" />
 

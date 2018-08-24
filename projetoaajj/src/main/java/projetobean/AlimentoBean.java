@@ -57,6 +57,5 @@ public class AlimentoBean implements Serializable{
 
 	public AlimentoBean() {
 		alimento = new Alimento();
-		dao = new DaoAli();
 	}
 }

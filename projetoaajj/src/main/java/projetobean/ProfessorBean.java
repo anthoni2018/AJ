@@ -1,5 +1,6 @@
 package projetobean;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,7 +12,7 @@ import projetoEntidades.Professor;
 
 @ViewScoped
 @Named
-public class ProfessorBean {
+public class ProfessorBean implements Serializable{
     
 	@Inject
 	private Map<Integer, Professor> professores;

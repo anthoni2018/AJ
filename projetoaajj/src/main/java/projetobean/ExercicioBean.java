@@ -1,5 +1,7 @@
 package projetobean;
 
+import java.io.Serializable;
+
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
@@ -10,7 +12,7 @@ import projetoServicos.PersistenciaDacException;
 
 @ViewScoped
 @Named
-public class ExercicioBean {
+public class ExercicioBean implements Serializable{
 	
 	@Inject
 	private DaoExer dao;
