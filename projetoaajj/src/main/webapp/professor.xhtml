@@ -36,9 +36,9 @@
         	label="Descrição" />
 
     <p:commandButton id="btnNovo" value="Novo"
-				action="#{usuarioBean.save()}" ajax="false" />
+				action="#{professorBean.adicionar()}" ajax="false" />
 			<p:commandButton id="btnLimpar" value="Limpar"
-				action="#{professorBean.limpar()}" ajax="false" />
+				action="#{professorBean.remove()}" ajax="false" />
 		</p:panelGrid>
 
     	<p:dataTable id="professorEsTable" border="1" var="prof"
@@ -65,9 +65,8 @@
 
             	<p:commandButton id="botaoRemover" value="remover" ajax="false"
             	action="#{usuarioBean.remove(entidade)}"></p:commandButton>
-				<p:commandButton value="Editar" ajax="false"
-                	update="professoresTable"
-                	action="#{professorBean.removerProfessor(prof.idProfessor)}" />
+	
+        
 
         	</p:column>
     	</p:dataTable>

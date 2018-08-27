@@ -9,26 +9,38 @@
 </h:head>
 
 <h:body>
+<p:messages />
+
 	<h:form>
-		<p:outputLabel value="Idalimento: " />
-		<p:inputText value="#{alimentoBean.alimento.idAlimento}"
-			label="idAlimento" />
+	<p:panelGrid columns="2" >
+			<f:facet name="caption">
+				<h:outputText value="Filtros" />
+			</f:facet>
+			<f:facet name="header">
+			</f:facet>
+			
+		<p:outputLabel value="Idalimento:" for= "idalimentoField" />
+		<p:inputText id="idalimentoField" value= "#{alimentoBean.alimento.idAlimento}"
+			label="idAlimento"  style="width:350px" />
 
-		<p:outputLabel value="Peso: " for="itPesoAlimento" />
-		<p:inputText id="itPesoAlimento" value="#{alimentoBean.alimento.peso}"
-			label="Peso" />
+		<p:outputLabel value="Peso: " for="itPesoAlimentoField" />
+		<p:inputText id="itPesoAlimentoField" value="#{alimentoBean.alimento.peso}"
+			label="Peso" style="width:350px" />
 
-		<p:outputLabel value="Nome: " for="itNomeAlimento" />
-		<p:inputText id="itNomeAlimento" value="#{alimentoBean.alimento.nome}"
-			label="Nome" />
+		<p:outputLabel value="Nome: " for="itNomeAlimentoField" />
+		<p:inputText id="itNomeAlimentoField" value="#{alimentoBean.alimento.nome}"
+			label="Nome" style="width:350px" />
 
-		<p:outputLabel value="Caloria: " for="itCaloriaAlimento" />
-		<p:inputText id="itCaloriaAlimento" value="#{alimentoBean.alimento.caloria}"
-			label="Caloria" />
+		<p:outputLabel value="Caloria: " for="itCaloriaAlimentoField" />
+		<p:inputText id="itCaloriaAlimentoField" value="#{alimentoBean.alimento.caloria}"
+			label="Caloria" style="width:350px" />
 
-		<p:commandButton id="botaoEntrar" value="entrar"
-			action="#{alimentoBean.adicionarAlimento()}" ajax="false">
-		</p:commandButton>
+			<p:commandButton id="btnNovo" value="Novo"
+				action="#{alimentoBean.alimento}" ajax="false" />
+			<p:commandButton id="btnLimpar" value="Limpar"
+				action="#{alimentoBean.alimento}" ajax="false" />
+		</p:panelGrid>
+		
 
 		<p:dataTable id="alimentosTable" border="1" var="ali" ajax = "false" 
 			value="#{alimentoBean.alimento}">
@@ -55,7 +67,7 @@
 				<p:commandButton id="botaoRemover" value="remover" ajax="false"
 					update="alimentosTable"
 					action="#{alimentoBean.removerAlimento(ali.idAlimento)}" />
-
+				
 			</p:column>
 		</p:dataTable>
 	</h:form>

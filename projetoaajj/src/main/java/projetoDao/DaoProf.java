@@ -28,9 +28,8 @@ public class DaoProf {
 	}
 
 	@TransacionalCDI
-	public void delete(Professor id) throws PersistenciaDacException {
-		manager.getTransaction().begin();
-		Professor professor = manager.find(Professor.class, id);
+	public void delete(Professor prof) throws PersistenciaDacException {
+		Professor professor = manager.find(Professor.class, prof.getIdProfessor());
 	}
 
 	public Professor getByID(int idProfessor) throws PersistenciaDacException {

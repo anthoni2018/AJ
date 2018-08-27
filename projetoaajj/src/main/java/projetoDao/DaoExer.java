@@ -26,8 +26,8 @@ public class DaoExer {
 	}
 
 	@TransacionalCDI
-	public void delete(int id) throws PersistenciaDacException {
-		Exercicio exercicio = manager.find(Exercicio.class, id);
+	public void delete(Exercicio exer) throws PersistenciaDacException {
+		Exercicio exercicio = manager.find(Exercicio.class, exer.getIdExercicio());
 	}
 	
 	public Exercicio getByID(int idExercicio) throws PersistenciaDacException {

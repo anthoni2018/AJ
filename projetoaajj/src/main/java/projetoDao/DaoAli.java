@@ -27,8 +27,8 @@ public class DaoAli {
 	}
 	
 	@TransacionalCDI
-	public void delete(int id) throws PersistenciaDacException {
-		Alimento alimento = manager.find(Alimento.class, id);
+	public void delete(Alimento ali) throws PersistenciaDacException {
+		Alimento alimento = manager.find(Alimento.class, ali.getIdAlimento());
 		
 	}
 	

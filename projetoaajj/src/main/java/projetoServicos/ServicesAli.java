@@ -28,7 +28,7 @@ public class ServicesAli {
 
 	public void delete(Alimento ali) throws ServiceDacException {
 		try {
-			Dao.delete(ali.getIdAlimento());
+			Dao.delete(ali);
 		} catch (PersistenciaDacException e) {
 			throw new ServiceDacException();
 		}
