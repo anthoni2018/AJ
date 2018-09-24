@@ -61,7 +61,8 @@ public class ExercicioBean implements Serializable{
 	}
 
 	public void removerExercicio(Integer idExercicio) throws PersistenciaDacException{
-		dao.delete(idExercicio);
+		Exercicio exercicio2 = dao.getByID(idExercicio);
+		dao.delete(exercicio2);
 	}
 
 	public ExercicioBean() {

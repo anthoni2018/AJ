@@ -51,7 +51,7 @@ public class AlimentoBean implements Serializable{
 		alimento = new Alimento();
 	}
 
-	public void removerAlimento(Integer idAlimento) throws PersistenciaDacException {
+	public void removerAlimento(Alimento idAlimento) throws PersistenciaDacException {
 		dao.delete(idAlimento);
 	}
 

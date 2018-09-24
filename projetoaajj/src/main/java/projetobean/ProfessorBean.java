@@ -1,32 +1,33 @@
 package projetobean;
 
 import java.io.Serializable;
-import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
+import projetoDao.DaoProf;
 import projetoEntidades.Professor;
+import projetoServicos.PersistenciaDacException;
 
 @ViewScoped
 @Named
 public class ProfessorBean implements Serializable{
     
 	@Inject
-	private Map<Integer, Professor> professores;
+	private DaoProf dao;
     
 	private Professor professor;
 	private String professorBusca;
 	
-	public Map<Integer, Professor> getProfessores() {
-    	return professores;
+	public Professor getProfessor1() {
+    	return professor;
 	}
 	
 	@PostConstruct
-	public void setProfessores(Map<Integer, Professor> professores) {
-    	this.professores = professores;
+	public void setProfessores(Map<Integer, Professor> professores, Professor professor) {
+    	this.professor = professor;
 	}
     
 	public Professor getProfessor() {
@@ -42,11 +43,11 @@ public class ProfessorBean implements Serializable{
    	 this.professorBusca = professorBusca;
     }
     
-    public void adicionarProfessor() {
-   	 Professor professor2 = professores.get(professor.getIdProfessor());
+    public void adicionarProfessor() throws PersistenciaDacException{
+   	 Professor professor2 = dao.getByID(professor.getIdProfessor());
    	 
     	if (professor2 == null) {
-   		 professores.put(professor.getIdProfessor(), professor);    
+   		 dao.save(professor);    
        	 
     	}else {
    		 professor2.setDescricao(professor.getDescricao());
@@ -57,12 +58,13 @@ public class ProfessorBean implements Serializable{
     	professor = new Professor();
 	}
     
-	public void removerProfessor(Integer idProfessor) {
-   	 professores.remove(idProfessor);
+	public void removerProfessor(Integer idProfessor) throws PersistenciaDacException{
+   	 Professor professor2 = dao.getByID(idProfessor);
+   	 dao.delete(professor2);
 	}
     
 	public ProfessorBean() {
    	 professor = new Professor();
-   	 professores = new HashMap<Integer, Professor>();
+   	dao = new DaoProf();
 	}
 }

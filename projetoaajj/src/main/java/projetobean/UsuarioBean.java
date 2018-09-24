@@ -1,32 +1,33 @@
 package projetobean;
 
 import java.io.Serializable;
-import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
+import projetoDao.DaoUsu;
 import projetoEntidades.Usuario;
+import projetoServicos.PersistenciaDacException;
 
 @ViewScoped
 @Named
 public class UsuarioBean implements Serializable{
 	
 	@Inject
-	private Map<Integer, Usuario> usuarios;
+	private DaoUsu dao;
 
 	private Usuario usuario;
 	private String usuarioBusca;
 
-	public Map<Integer, Usuario> getUsuarios() {
-		return usuarios;
+	public Usuario getUsuario1() {
+		return usuario;
 	}
 	
 	@PostConstruct
 	public void setUsuarios(Map<Integer, Usuario> usuarios) {
-		this.usuarios = usuarios;
+		this.usuario = usuario;
 	}
 
 	public Usuario getUsuario() {
@@ -45,11 +46,11 @@ public class UsuarioBean implements Serializable{
 		this.usuarioBusca = usuarioBusca;
 	}
 
-	public void adicionarUsuario() {
-		Usuario usuario2 = usuarios.get(usuario.getIdUsuario());
+	public void adicionarUsuario()throws PersistenciaDacException{
+		Usuario usuario2 = dao.getByID(usuario.getIdUsuario());
 
 		if (usuario2 == null) {
-			usuarios.put(usuario.getIdUsuario(), usuario);
+			dao.save(usuario);
 
 		} else {
 			usuario2.setDescricao(usuario.getDescricao());
@@ -61,12 +62,13 @@ public class UsuarioBean implements Serializable{
 		usuario = new Usuario();
 	}
 
-	public void removerUsuario(Integer idUsuario) {
-		usuarios.remove(idUsuario);
+	public void removerUsuario(Integer idUsuario)throws PersistenciaDacException {
+		Usuario usuario2 = dao.getByID(idUsuario);
+		dao.delete(usuario2);
 	}
 
 	public UsuarioBean() {
 		usuario = new Usuario();
-		usuarios = new HashMap<Integer, Usuario>();
+		dao = new DaoUsu();
 	}
 }
