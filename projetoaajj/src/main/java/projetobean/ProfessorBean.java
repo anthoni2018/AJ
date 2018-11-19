@@ -25,7 +25,6 @@ public class ProfessorBean implements Serializable{
     	return professor;
 	}
 	
-	@PostConstruct
 	public void setProfessores(Map<Integer, Professor> professores, Professor professor) {
     	this.professor = professor;
 	}

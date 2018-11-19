@@ -36,13 +36,13 @@
         	label="Descrição" />
 
     <p:commandButton id="btnNovo" value="Novo"
-				action="#{professorBean.adicionar()}" ajax="false" />
+				action="#{professorBean.adicionarProfessor()}" ajax="false" />
 			<p:commandButton id="btnLimpar" value="Limpar"
-				action="#{professorBean.remove()}" ajax="false" />
+				action="#{professorBean.removerProfessor()}" ajax="false" />
 		</p:panelGrid>
 
     	<p:dataTable id="professorEsTable" border="1" var="prof"
-        	value="#{professorBean.professores.values()}">
+        	value="#{professorBean.professor}">
         	<f:facet name="header">Professores</f:facet>
         	<p:column>
             	<f:facet name="header">IdProfessor</f:facet>
@@ -64,7 +64,7 @@
             	<f:facet name="header">Opções</f:facet>
 
             	<p:commandButton id="botaoRemover" value="remover" ajax="false"
-            	action="#{usuarioBean.remove(entidade)}"></p:commandButton>
+            	action="#{professorBean.removerProfessor(entidade)}"></p:commandButton>
 	
         
 
