@@ -38,9 +38,7 @@
 			label="Descrição" />
 			
 			<p:commandButton id="btnNovo" value="Novo"
-				action="#{usuarioBean.save()}" ajax="false" />
-			<p:commandButton id="btnLimpar" value="Limpar"
-				action="#{usuarioBean.limpar()}" ajax="false" />
+				action="#{usuarioBean.adicionarUsuario()}" ajax="false" />
 		</p:panelGrid>
 
 		<p:dataTable id="usuariosTable" border="1" var="usu"

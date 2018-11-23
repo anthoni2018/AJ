@@ -10,74 +10,80 @@
 
 <h:body>
 	<p:messages />
-	
+
 	<h:form>
-	<p:panelGrid columns="2" >
+		<p:panelGrid columns="2">
 			<f:facet name="caption">
 				<h:outputText value="Filtros" />
 			</f:facet>
 			<f:facet name="header">
 				<h:outputText value="Usuário" />
 			</f:facet>
-			 
-    	<p:outputLabel value="idExercicio: "for="nomeField" />
-    	<p:inputText id="nomeField"  value="#{exercicioBean.exercicio.idExercicio}"
-        	label="IdExercicio" style="width:350px" />
 
-    	<p:outputLabel value="Tipo: " for="itTipoExercicioField" />
-    	<p:inputText id="itTipoExercicioField" value="#{exercicioBean.exercicio.tipo}"
-        	label="Tipo" style="width:350px" />
-       	 
-    	<p:outputLabel value="Tempo: " for="itTempoExercicioField" />
-    	<p:inputText id="itTempoExercicioField" value="#{exercicioBean.exercicio.tempo}"
-        	label="Tempo" style="width:350px" />
-       	 
-    	<p:outputLabel value="Calorias Perdidas: " for="itCaloriasperdidasExercicioField" />
-    	<p:inputText id="itCaloriasperdidasExercicioField" value="#{exercicioBean.exercicio.caloriasPerdidas}"
-        	label="Calorias Perdidas"  />
-        	
-        <p:outputLabel value="Nivel Exercicio: " for="itNivelexercicioExercicioField" />
-    	<p:inputText id="itNivelexercicioExercicioField" value="#{exercicioBean.exercicio.nivelExercicio}"
-        	label="Nivel Exercicio"  />
-        	
-        	<p:commandButton id="btnNovo" value="Novo"
-				action="#{usuarioBean.save()}" ajax="false" />
-			<p:commandButton id="btnLimpar" value="Limpar"
-				action="#{exercicioBean.limpar()}" ajax="false" />
+			<p:outputLabel value="idexercicio: " for="nomeField" />
+			<p:inputText id="nomeField"
+				value="#{exercicioBean.exercicio.idExercicio}" label="IdExercicio"
+				style="width:350px" />
+
+			<p:outputLabel value="Tipo: " for="itTipoExercicioField" />
+			<p:inputText id="itTipoExercicioField"
+				value="#{exercicioBean.exercicio.tipo}" label="Tipo"
+				style="width:350px" />
+
+			<p:outputLabel value="Tempo: " for="itTempoExercicioField" />
+			<p:inputText id="itTempoExercicioField"
+				value="#{exercicioBean.exercicio.tempo}" label="Tempo"
+				style="width:350px" />
+
+			<p:outputLabel value="Calorias Perdidas: "
+				for="itCaloriasperdidasExercicioField" />
+			<p:inputText id="itCaloriasperdidasExercicioField"
+				value="#{exercicioBean.exercicio.caloriasPerdidas}"
+				label="Calorias Perdidas" />
+
+			<p:outputLabel value="Nivel Exercicio: "
+				for="itNivelexercicioExercicioField" />
+			<p:inputText id="itNivelexercicioExercicioField"
+				value="#{exercicioBean.exercicio.nivelExercicio}"
+				label="Nivel Exercicio" />
+
+			<p:commandButton id="btnNovo" value="Novo"
+				action="#{exercicioBean.adicionarExercicio()}" ajax="false" />
+			
 		</p:panelGrid>
 
 
-    	<p:dataTable id="exercicioEsTable" border="1" var="exer"
-        	value="#{exercicioBean.exercicio}">
-        	<f:facet name="header">Exercicios</f:facet>
-        	<p:column>
-            	<f:facet name="header">Id Exercicio</f:facet>
-            	<h:outputText value="#{exer.idExercicio}" />
-        	</p:column>
-        	<p:column>
-            	<f:facet name="header">Tipo</f:facet>
-            	<h:outputText value="#{exer.tipo}" />
-        	</p:column>
-        	<p:column>
-            	<f:facet name="header">Tempo</f:facet>
-            	<h:outputText value="#{exer.tempo}" />
-        	</p:column>
-        	<p:column>
-            	<f:facet name="header">Calorias Perdidas</f:facet>
-            	<h:outputText value="#{exer.caloriasPerdidas}" />
-        	</p:column>
-        	<p:column>
-            	<f:facet name="header">Nivel do Exercicio</f:facet>
-            	<h:outputText value="#{exer.nivelExercicio}" />
-        	</p:column>
-        	<p:column>
-            	<f:facet name="header">Opções</f:facet>
-            	<p:commandButton id="botaoRemover" value="remover" ajax="false"
-            	action="#{exercicioBean.remover(entidade)}"></p:commandButton>
-            	
+		<p:dataTable id="exercicioEsTable" border="1" var="exer"
+			value="#{exercicioBean.exercicio}">
+			<f:facet name="header">Exercicios</f:facet>
+			<p:column>
+				<f:facet name="header">Id Exercicio</f:facet>
+				<h:outputText value="#{exer.idExercicio}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">Tipo</f:facet>
+				<h:outputText value="#{exer.tipo}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">Tempo</f:facet>
+				<h:outputText value="#{exer.tempo}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">Calorias Perdidas</f:facet>
+				<h:outputText value="#{exer.caloriasPerdidas}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">Nivel do Exercicio</f:facet>
+				<h:outputText value="#{exer.nivelExercicio}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">Opções</f:facet>
+				<p:commandButton id="botaoRemover" value="remover" ajax="false"
+					action="#{exercicioBean.remover(entidade)}"></p:commandButton>
 
-        	</p:column>
-    	</p:dataTable>
+
+			</p:column>
+		</p:dataTable>
 	</h:form>
 </h:body>
 
