@@ -17,7 +17,7 @@
 				<h:outputText value="Filtros" />
 			</f:facet>
 			<f:facet name="header">
-				<h:outputText value="Usuário" />
+				<h:outputText value="Exercicio" />
 			</f:facet>
 
 			<p:outputLabel value="idexercicio: " for="nomeField" />
@@ -48,8 +48,7 @@
 				label="Nivel Exercicio" />
 
 			<p:commandButton id="btnNovo" value="Novo"
-				action="#{exercicioBean.adicionarExercicio()}" ajax="false" />
-			
+				action="#{exercicioBean.adicionarExercicio()}" ajax="false" />	
 		</p:panelGrid>
 
 
@@ -79,7 +78,7 @@
 			<p:column>
 				<f:facet name="header">Opções</f:facet>
 				<p:commandButton id="botaoRemover" value="remover" ajax="false"
-					action="#{exercicioBean.remover(entidade)}"></p:commandButton>
+					action="#{exercicioBean.removerExercicio(entidade)}"></p:commandButton>
 
 
 			</p:column>

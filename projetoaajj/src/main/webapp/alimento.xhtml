@@ -17,7 +17,9 @@
 				<h:outputText value="Filtros" />
 			</f:facet>
 			<f:facet name="header">
+			<h:outputText value="Alimento" />
 			</f:facet>
+			
 			
 		<p:outputLabel value="Idalimento:" for= "idalimentoField" />
 		<p:inputText id="idalimentoField" value= "#{alimentoBean.alimento.idAlimento}"
@@ -36,9 +38,8 @@
 			label="Caloria" style="width:350px" />
 
 			<p:commandButton id="btnNovo" value="Novo"
-				action="#{alimentoBean.save()}" ajax="false" />
-			<p:commandButton id="btnLimpar" value="Limpar"
-				action="#{alimentoBean.limpar()}" ajax="false" />
+				action="#{alimentoBean.adicionarAlimento()}" ajax="false" />
+			
 		</p:panelGrid>
 		
 
