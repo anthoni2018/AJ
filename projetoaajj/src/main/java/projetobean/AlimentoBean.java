@@ -3,14 +3,15 @@ package projetobean;
 import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
-import javax.faces.view.ViewScoped;
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 import projetoDao.DaoAli;
 import projetoEntidades.Alimento;
 import projetoServicos.PersistenciaDacException;
 
-@ViewScoped
+@SessionScoped
 @Named
 public class AlimentoBean implements Serializable{
 	
@@ -24,7 +25,6 @@ public class AlimentoBean implements Serializable{
 		return alimento;
 	}
 	
-	@PostConstruct
 	public void setAlimento(Alimento alimento) {
 		this.alimento = alimento;
 	}
@@ -55,7 +55,16 @@ public class AlimentoBean implements Serializable{
 		dao.delete(idAlimento);
 	}
 
-	public AlimentoBean() {
+	@PostConstruct
+	public void init() {
 		alimento = new Alimento();
+	}
+	
+	public DaoAli getDao() {
+		return dao;
+	}
+	
+	public void setDao(DaoAli dao) {
+		this.dao = dao;
 	}
 }
