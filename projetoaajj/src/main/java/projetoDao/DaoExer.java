@@ -2,6 +2,7 @@ package projetoDao;
 
 import java.util.List;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -10,6 +11,7 @@ import projetoEntidades.Exercicio;
 import projetoServicos.PersistenciaDacException;
 import util.TransacionalCDI;
 
+@ApplicationScoped
 public class DaoExer {
 	
 	@Inject

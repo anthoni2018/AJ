@@ -1,6 +1,7 @@
 package projetobean;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
@@ -20,16 +21,26 @@ public class ExercicioBean implements Serializable{
 
 	private Exercicio exercicio;
 	private String exercicioBusca;
-
-	public Exercicio getExercicio1(){
-		return exercicio;
-	}
+	private List<Exercicio> exercicios;
 	
 	@PostConstruct
-	public void setExercicios(Exercicio exercicio) {
-		this.exercicio = exercicio;
+	public void init() {
+		exercicio = new Exercicio();
+		try {
+			setExercicios(dao.getAll());
+		} catch (PersistenciaDacException e) {
+			e.printStackTrace();
+		}
 	}
 
+	public List<Exercicio> getExercicios() {
+		return exercicios;
+	}
+	
+	public void setExercicios(List<Exercicio> exercicios) {
+		this.exercicios = exercicios;
+	}
+	
 	public Exercicio getExercicio() {
 		return exercicio;
 	}

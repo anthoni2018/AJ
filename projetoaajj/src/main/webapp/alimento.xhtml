@@ -39,10 +39,8 @@
 
 			<p:commandButton id="btnNovo" value="Novo"
 				action="#{alimentoBean.adicionarAlimento()}" ajax="false" />
-			
-		</p:panelGrid>
+			</p:panelGrid>
 		
-
 		<p:dataTable id="alimentosTable" border="1" var="ali" ajax = "false" 
 			value="#{alimentoBean.alimento}">
 			<f:facet name="header">Alimentos</f:facet>

@@ -1,20 +1,17 @@
 package projetoDao;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import projetoEntidades.Professor;
 import projetoEntidades.Usuario;
 import projetoServicos.PersistenciaDacException;
 import util.TransacionalCDI;
 
+@ApplicationScoped
 public class DaoUsu {
 	
 	@Inject
