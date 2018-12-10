@@ -1,6 +1,7 @@
 package projetobean;
 
 import java.io.Serializable;
+import java.util.Collection;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
@@ -19,6 +20,8 @@ public class AlimentoBean implements Serializable{
 	private DaoAli dao;
 
 	private Alimento alimento;
+	private Collection<Alimento> alimentos;
+	
 	private String alimentoBusca;
 	
 	public Alimento getAlimento() {
@@ -56,8 +59,9 @@ public class AlimentoBean implements Serializable{
 	}
 
 	@PostConstruct
-	public void init() {
+	public void init() throws PersistenciaDacException {
 		alimento = new Alimento();
+		alimentos = getDao().getAll();
 	}
 	
 	public DaoAli getDao() {
@@ -67,4 +71,13 @@ public class AlimentoBean implements Serializable{
 	public void setDao(DaoAli dao) {
 		this.dao = dao;
 	}
+
+	public Collection<Alimento> getAlimentos() {
+		return alimentos;
+	}
+
+	public void setAlimentos(Collection<Alimento> alimentos) {
+		this.alimentos = alimentos;
+	}
+	
 }

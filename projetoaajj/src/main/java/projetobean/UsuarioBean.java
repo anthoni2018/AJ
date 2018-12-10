@@ -1,6 +1,7 @@
 package projetobean;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
@@ -9,6 +10,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import projetoDao.DaoUsu;
+import projetoEntidades.Alimento;
 import projetoEntidades.Usuario;
 import projetoServicos.PersistenciaDacException;
 
@@ -20,6 +22,7 @@ public class UsuarioBean implements Serializable{
 	private DaoUsu dao;
 
 	private Usuario usuario;
+	private Collection<Usuario> usuarios;
 	private String usuarioBusca;
 
 	public Usuario getUsuario1() {

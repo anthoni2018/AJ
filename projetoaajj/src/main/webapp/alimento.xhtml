@@ -35,14 +35,14 @@
 
 		<p:outputLabel value="Caloria: " for="itCaloriaAlimentoField" />
 		<p:inputText id="itCaloriaAlimentoField" value="#{alimentoBean.alimento.caloria}"
-			label="Caloria" style="width:350px" />
+		  	label="Caloria" style="width:350px" />
 
 			<p:commandButton id="btnNovo" value="Novo"
 				action="#{alimentoBean.adicionarAlimento()}" ajax="false" />
 			</p:panelGrid>
 		
 		<p:dataTable id="alimentosTable" border="1" var="ali" ajax = "false" 
-			value="#{alimentoBean.alimento}">
+			value="#{alimentoBean.alimentos}">
 			<f:facet name="header">Alimentos</f:facet>
 			<p:column>
 				<f:facet name="header">ID (Alimento)</f:facet>
@@ -63,9 +63,7 @@
 			<p:column>
 				<f:facet name="header">Opções</f:facet>
 
-				<p:commandButton id="botaoRemover" value="remover" ajax="false"
-					update="alimentosTable"
-					action="#{alimentoBean.removerAlimento(ali.idAlimento)}" />
+				<p:commandButton id="botaoRemover" value="remover" ajax="false" action="#{alimentoBean.removerAlimento(ali.idAlimento)}" />
 				
 			</p:column>
 		</p:dataTable>
